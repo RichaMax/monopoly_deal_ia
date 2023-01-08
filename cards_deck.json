@@ -1,0 +1,36 @@
+{
+  "money1": {
+    "name": "M1",
+    "value": 1,
+    "number of cards": 6
+  },
+  "money2": {
+    "name": "M2",
+    "value": 2,
+    "number of cards": 5
+  },
+  "money3": {
+    "name": "M3",
+    "value": 3,
+    "number of cards": 3
+  },
+  "money4": {
+    "name": "M4",
+    "value": 4,
+    "number of cards": 3
+  },
+  "money5": {
+    "name": "M5",
+    "value": 5,
+    "number of cards": 2
+  },
+  "money10": {
+    "name": "M10",
+    "value": 10,
+    "number of cards": 1
+  },
+  "rent_all":{
+    "name": "rent all",
+
+  }
+}
