@@ -1,36 +1,379 @@
 {
   "money1": {
-    "name": "M1",
-    "value": 1,
+    "attrs": {
+      "name": "1M",
+      "value": 1
+    },
     "number of cards": 6
   },
   "money2": {
-    "name": "M2",
-    "value": 2,
+    "attrs": {
+      "name": "2M",
+      "value": 2
+    },
     "number of cards": 5
   },
   "money3": {
-    "name": "M3",
-    "value": 3,
+    "attrs": {
+      "name": "3M",
+      "value": 3
+    },
     "number of cards": 3
   },
   "money4": {
-    "name": "M4",
-    "value": 4,
+    "attrs": {
+      "name": "4M",
+      "value": 4
+    },
     "number of cards": 3
   },
   "money5": {
-    "name": "M5",
-    "value": 5,
+    "attrs": {
+      "name": "5M",
+      "value": 5
+    },
     "number of cards": 2
   },
   "money10": {
-    "name": "M10",
-    "value": 10,
+    "attrs": {
+      "name": "10M",
+      "value": 10
+    },
     "number of cards": 1
   },
-  "rent_all":{
-    "name": "rent all",
-
+  "deal break": {
+    "attrs": {
+      "name": "Deal breaker",
+      "value": 5,
+      "action": "Steal property group"
+    },
+    "number of cards": 2
+  },
+  "debt collection": {
+    "attrs": {
+      "name": "Dept collection",
+      "value": 3,
+      "action": "ask for 5M"
+    },
+    "number of cards": 3
+  },
+  "double rent": {
+    "attrs": {
+      "name": "double rent",
+      "value": 1,
+      "action": "Ask for double rent"
+    },
+    "number of cards": 2
+  },
+  "forced deal": {
+    "attrs": {
+      "name": "Forced deal",
+      "value": 3,
+      "action": "Swap a property"
+    },
+    "number of cards": 3
+  },
+  "sly deal": {
+    "attrs": {
+      "name": "Sly deal",
+      "value": 3,
+      "action": "Stea a property"
+    },
+    "number of cards": 3
+  },
+  "hotel": {
+    "attrs": {
+      "name": "hotel",
+      "value": 4,
+      "action": "Put Hotel on group"
+    },
+    "number of cards": 3
+  },
+  "house": {
+    "attrs": {
+      "name": "house",
+      "value": 3,
+      "action": "Put House on group"
+    },
+    "number of cards": 3
+  },
+  "birthday": {
+    "attrs": {
+      "name": "It's my birthday",
+      "value": 2,
+      "action": "Ask everyone 2M"
+    },
+    "number of cards": 3
+  },
+  "no": {
+    "attrs": {
+      "name": "no",
+      "value": 4,
+      "action": "Cancel action"
+    },
+    "number of cards": 3
+  },
+  "pass go": {
+    "attrs": {
+      "name": "Pass go",
+      "value": 1,
+      "action": "Draw 2 cards"
+    },
+    "number of cards": 10
+  },
+  "rent joker": {
+    "attrs": {
+      "name": "Rent joker",
+      "value": 3,
+      "colors": [],
+      "action": "Ask one player for any rent money"
+    },
+    "number of cards": 3
+  },
+  "rent dblue green": {
+    "attrs": {
+      "name": "Rent dark blue - green",
+      "value": 1,
+      "colors": ["DARK_BLUE", "GREEN"],
+      "action": "Ask all players for rent money"
+    },
+    "number of cards": 2
+  },
+  "rent brown lblue": {
+    "attrs": {
+      "name": "Rent brown - light blue",
+      "value": 1,
+      "colors": ["BROWN", "LIGHT_BLUE"],
+      "action": "Ask all players for rent money"
+    },
+    "number of cards": 2
+  },
+  "rent purple orange": {
+    "attrs": {
+      "name": "Rent purple - orange",
+      "value": 1,
+      "colors": ["PURPLE", "ORANGE"],
+      "action": "Ask all players for rent money"
+    },
+    "number of cards": 2
+  },
+  "rent black lgreen": {
+    "attrs": {
+      "name": "Rent black - lgreen",
+      "value": 1,
+      "colors": ["BLACK", "LIGHT_GREEN"],
+      "action": "Ask all players for rent money"
+    },
+    "number of cards": 2
+  },
+  "rent red yellow": {
+    "attrs": {
+      "name": "Rent red - yellow",
+      "value": 1,
+      "colors": ["RED", "YELLOW"],
+      "action": "Ask all players for rent money"
+    },
+    "number of cards": 2
+  },
+  "property dblue": {
+    "attrs": {
+      "name": "property dark blue",
+      "value": 4,
+      "color": ["DARK_BLUE"],
+      "rent_values": [3, 8],
+      "multi": false
+    },
+    "number of cards": 2
+  },
+  "property brown": {
+    "attrs": {
+      "name": "property brown",
+      "value": 1,
+      "color": ["BROWN"],
+      "rent_values": [1, 2],
+      "multi": false
+    },
+    "number of cards": 2
+  },
+  "property lgreen": {
+    "attrs": {
+      "name": "property light green",
+      "value": 2,
+      "color": ["LIGHT_GREEN"],
+      "rent_values": [1, 2],
+      "multi": false
+    },
+    "number of cards": 2
+  },
+  "property green": {
+    "attrs": {
+      "name": "property green",
+      "value": 4,
+      "color": ["GREEN"],
+      "rent_values": [2, 4, 7],
+      "multi": false
+    },
+    "number of cards": 3
+  },
+  "property lblue": {
+    "attrs": {
+      "name": "property light blue",
+      "value": 2,
+      "color": ["LIGHT_BLUE"],
+      "rent_values": [1, 2, 3],
+      "multi": false
+    },
+    "number of cards": 3
+  },
+  "property orange": {
+    "attrs": {
+      "name": "property orange",
+      "value": 2,
+      "color": ["ORANGE"],
+      "rent_values": [1, 3, 5],
+      "multi": false
+    },
+    "number of cards": 3
+  },
+  "property purple": {
+    "attrs": {
+      "name": "property purple",
+      "value": 2,
+      "color": ["PURPLE"],
+      "rent_values": [1, 2, 4],
+      "multi": false
+    },
+    "number of cards": 3
+  },
+  "property red": {
+    "attrs": {
+      "name": "property red",
+      "value": 3,
+      "color": ["RED"],
+      "rent_values": [2, 4, 6],
+      "multi": false
+    },
+    "number of cards": 3
+  },
+  "property yellow": {
+    "attrs": {
+      "name": "property yellow",
+      "value": 3,
+      "color": ["YELLOW"],
+      "rent_values": [2, 4, 6],
+      "multi": false
+    },
+    "number of cards": 3
+  },
+  "property black": {
+    "attrs": {
+      "name": "property black",
+      "value": 2,
+      "color": ["BLACK"],
+      "rent_values": [1, 2, 3, 4],
+      "multi": false
+    },
+    "number of cards": 4
+  },
+  "property joker": {
+    "attrs": {
+      "name": "property joker",
+      "value": 0,
+      "color": [],
+      "rent_values": [],
+      "multi": true
+    },
+    "number of cards": 2
+  },
+  "property dblue green": {
+    "attrs": {
+      "name": "property dark blue - green",
+      "value": 4,
+      "color": ["DARK_BLUE", "GREEN"],
+      "rent_values": {
+        "DARK_BLUE": [3, 8],
+        "GREEN": [2, 4, 7]
+      },
+      "multi": true
+    },
+    "number of cards": 1
+  },
+  "property lblue brown": {
+    "attrs": {
+      "name": "property light blue - brown",
+      "value": 1,
+      "color": ["LIGHT_BLUE", "BROWN"],
+      "rent_values": {
+        "LIGHT_BLUE": [1, 2, 3],
+        "BRWON": [1, 2]
+      },
+      "multi": true
+    },
+    "number of cards": 1
+  },
+  "property orange purple": {
+    "attrs": {
+      "name": "property orange - purple",
+      "value": 2,
+      "color": ["ORANGE", "PURPLE"],
+      "rent_values": {
+        "ORANGE": [1, 3, 5],
+        "PURPLE": [1, 2, 4]
+      },
+      "multi": true
+    },
+    "number of cards": 2
+  },
+  "property green black": {
+    "attrs": {
+      "name": "property green - black",
+      "value": 4,
+      "color": ["GREEN", "BLACK"],
+      "rent_values": {
+        "GREEN": [2, 4, 7],
+        "BLACK": [1, 2, 3, 4]
+      },
+      "multi": true
+    },
+    "number of cards": 1
+  },
+  "property lblue black": {
+    "attrs": {
+      "name": "property lblue - black",
+      "value": 4,
+      "color": ["LIGHT_BLUE", "BLACK"],
+      "rent_values": {
+        "LIGHT_BLUE": [1, 2, 3],
+        "BLACK": [1, 2, 3, 4]
+      },
+      "multi": true
+    },
+    "number of cards": 1
+  },
+  "property lgreen black": {
+    "attrs": {
+      "name": "property light green - black",
+      "value": 2,
+      "color": ["LIGHT_GREEN", "BLACK"],
+      "rent_values": {
+        "LIGHT_GREEN": [1, 2],
+        "BLACK": [1, 2, 3, 4]
+      },
+      "multi": true
+    },
+    "number of cards": 1
+  },
+  "property yellow red": {
+    "attrs": {
+      "name": "property yellow - red",
+      "value": 2,
+      "color": ["YELLOW", "RED"],
+      "rent_values": {
+        "YELLOW": [2, 4, 6],
+        "RED": [2, 3, 6]
+      },
+      "multi": true
+    },
+    "number of cards": 2
   }
 }
