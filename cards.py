@@ -1,23 +1,48 @@
 import json
-import random
+import numpy as np
 from abc import ABC, abstractmethod
 
 
 class Deck:
-    def __init__(self):
-        self.cards = []
-        self.discard_carss = []
+    def __init__(self, path_to_deck):
+        self.cards = self.generate_deck(path_to_deck)
         self.shuffle()
+        self.discard_carss = []
 
     def shuffle(self):
-        self.cards = random.shuffle(self.cards)
+        np.random.shuffle(self.cards)
 
     def generate_deck(self, path_to_deck):
+        deck = []
         with open(path_to_deck, 'rb') as f:
             cards_dict = json.load(f)
         for k, v in cards_dict.items():
-            pass
-        print(cards_dict)
+            if "money" in k:
+                deck += [
+                    MoneyCard(name=v['attrs']["name"], value=v['attrs']["value"]) for _ in range(v["number_of_cards"])
+                ]
+            elif k.startswith("rent"):
+                deck += [
+                    RentCard(name=v['attrs']["name"],
+                             value=v['attrs']["value"],
+                             colors=v['attrs']["colors"],
+                             action=v['attrs']["action"]) for _ in range(v["number_of_cards"])
+                ]
+            elif k.startswith("property"):
+                deck += [
+                    ProprietyCard(name=v['attrs']["name"],
+                                  value=v['attrs']["value"],
+                                  color=v['attrs']["color"],
+                                  rent_values=v['attrs']["rent_values"],
+                                  multi=v['attrs']["multi"]) for _ in range(v["number_of_cards"])
+                ]
+            else:
+                deck += [
+                    ActionCard(name=v['attrs']["name"],
+                               value=v['attrs']["value"],
+                               action=v['attrs']["action"]) for _ in range(v["number_of_cards"])
+                ]
+        return deck
 
     def draw(self):
         return self.cards.pop()
@@ -56,6 +81,9 @@ class ProprietyCard(Card):
         self.is_multi = multi
         self.rent_values = rent_values
 
+    def played(self, player_obj):
+        pass
+
 
 class ActionCard(Card):
     def __init__(self, name, value, action):
@@ -71,7 +99,7 @@ class ActionCard(Card):
 
 
 class RentCard(ActionCard):
-    def __init__(self, name, value, colors, action, rent_values):
+    def __init__(self, name, value, colors, action):
         super().__init__(name, value, action)
         self.card_type = "rent"
         self.colors = colors
