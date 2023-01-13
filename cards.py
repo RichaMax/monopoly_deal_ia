@@ -7,7 +7,7 @@ class Deck:
     def __init__(self, path_to_deck):
         self.cards = self.generate_deck(path_to_deck)
         self.shuffle()
-        self.discard_carss = []
+        self.discard_cards = []
 
     def shuffle(self):
         np.random.shuffle(self.cards)
@@ -30,11 +30,11 @@ class Deck:
                 ]
             elif k.startswith("property"):
                 deck += [
-                    ProprietyCard(name=v['attrs']["name"],
-                                  value=v['attrs']["value"],
-                                  color=v['attrs']["color"],
-                                  rent_values=v['attrs']["rent_values"],
-                                  multi=v['attrs']["multi"]) for _ in range(v["number_of_cards"])
+                    PropertyCard(name=v['attrs']["name"],
+                                 value=v['attrs']["value"],
+                                 color=v['attrs']["color"],
+                                 rent_values=v['attrs']["rent_values"],
+                                 multi=v['attrs']["multi"]) for _ in range(v["number_of_cards"])
                 ]
             else:
                 deck += [
@@ -47,7 +47,7 @@ class Deck:
     def draw(self):
         return self.cards.pop()
 
-
+# 
 class Card(ABC):
     """
     to write
@@ -59,7 +59,7 @@ class Card(ABC):
 
     @abstractmethod
     def played(self, **kwargs):
-        raise NotImplementedError("Play method is not implemented!")
+        raise NotImplementedError("played method is not implemented!")
 
     def __repr__(self):
         return self.name
@@ -73,8 +73,8 @@ class MoneyCard(Card):
         player_obj.money += self.value
         player_obj.money_cards.append(self)
 
-
-class ProprietyCard(Card):
+#faire un dic pour dagager les valeurs du rent des cartes
+class PropertyCard(Card):
     def __init__(self, name, value, color, rent_values, multi=False):
         super().__init__("property", name, value)
         self.color = color
@@ -84,7 +84,7 @@ class ProprietyCard(Card):
     def played(self, player_obj):
         pass
 
-
+# faire une class par action card
 class ActionCard(Card):
     def __init__(self, name, value, action):
         super().__init__("action", name, value)
@@ -104,8 +104,7 @@ class RentCard(ActionCard):
         self.card_type = "rent"
         self.colors = colors
 
-
-    def played(self, player_obj, as_money=False):
+    def played(self, player_obj, as_money=False, target=None):
         if as_money:
             player_obj.money += self.value
             player_obj.money_cards.append(self)

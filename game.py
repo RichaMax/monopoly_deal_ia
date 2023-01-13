@@ -6,7 +6,7 @@ from cards import Deck
 class Game:
     def __init__(self, players):
         self.players = players
-        self.deck = Deck()
+        self.deck = Deck("cards_deck.json")
         self.current_player = 0
         self.game_over = False
 

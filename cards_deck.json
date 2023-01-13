@@ -53,7 +53,7 @@
     "attrs": {
       "name": "Dept collection",
       "value": 3,
-      "action": "ask for 5M"
+      "action": "ask for 5M to a player"
     },
     "number_of_cards": 3
   },
@@ -77,7 +77,7 @@
     "attrs": {
       "name": "Sly deal",
       "value": 3,
-      "action": "Stea a property"
+      "action": "Steal a property"
     },
     "number_of_cards": 3
   },

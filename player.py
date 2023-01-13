@@ -11,10 +11,11 @@ class Player:
             card = deck.draw()
             self.hand.append(card)
 
-    # def play(self, card):
-    #     self.hand.remove(card)
-    #     card.play()
+    def play(self, card):
+        self.hand.remove(card)
+        card.played()
 
     def pay_rent(self, player, amount):
-        self.cash -= amount
-        player.cash += amount
+        if self.money > 0:
+            self.money -= 0 # to do
+            # player.cash += amount
