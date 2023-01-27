@@ -2,7 +2,17 @@ class Player:
     def __init__(self, name):
         self.name = name
         self.hand = []
-        self.properties = {}
+        self.properties = {"DARK_BLUE": [],
+                           "BROWN": [],
+                           "LIGHT_GREEN": [],
+                           "GREEN": [],
+                           "LIGHT_BLUE": [],
+                           "ORANGE": [],
+                           "PURPLE": [],
+                           "RED": [],
+                           "YELLOW": [],
+                           "BLACK": []
+                           }
         self.money = 0
         self.money_cards = []
 
@@ -15,7 +25,7 @@ class Player:
         self.hand.remove(card)
         card.played()
 
-    def pay_rent(self, player, amount):
+    def pay(self, player, amount):
         if self.money > 0:
             self.money -= 0 # to do
             # player.cash += amount
