@@ -81,19 +81,19 @@
     },
     "number_of_cards": 3
   },
-  "hotel": {
-    "attrs": {
-      "name": "hotel",
-      "value": 4,
-      "action": "Put Hotel on group"
-    },
-    "number_of_cards": 3
-  },
   "house": {
     "attrs": {
       "name": "house",
       "value": 3,
       "action": "Put House on group"
+    },
+    "number_of_cards": 3
+  },
+  "hotel": {
+    "attrs": {
+      "name": "hotel",
+      "value": 4,
+      "action": "Put Hotel on group"
     },
     "number_of_cards": 3
   },

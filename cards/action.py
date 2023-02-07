@@ -1,5 +1,22 @@
 from .card import Card
 
+group_sizes = {"DARK_BLUE": 2,
+               "BROWN": 2,
+               "LIGHT_GREEN": 2,
+               "GREEN": 4,
+               "LIGHT_BLUE": 2,
+               "ORANGE": 2,
+               "PURPLE": 2,
+               "RED": 3,
+               "YELLOW": 3,
+               "BLACK": 2
+               }
+
+
+class IllegalMove(Exception):
+    pass
+
+
 class ActionCard(Card):
     def __init__(self, name, value):
         super().__init__(name, value)
@@ -14,54 +31,87 @@ class DealBreakerCard(ActionCard):
     def __init__(self, name, value):
         super().__init__(name, value)
 
-    def played(self, game, active_player, targeted_player, chosen_color=None, as_money=False):
+    def played(self, active_player, targeted_player, chosen_color=None, as_money=False):
         if as_money:
             self.play_as_money(active_player)
         else:
-            targeted_player.give_group(active_player, chosen_color)
-        active_player.hand.remove(self)
-        game.deck.discard_cards.append(self)
+            active_player.cards_buffer.extend(targeted_player.properties[chosen_color])
+            targeted_player.properties[chosen_color] = []
 
 
 class DeptCollectionCard(ActionCard):
     def __init__(self, name, value):
         super().__init__(name, value)
 
-    def played(self, game, active_player, targeted_player, as_money=False):
+    def played(self, active_player, targeted_player, as_money=False):
         if as_money:
             self.play_as_money(active_player)
         else:
             targeted_player.pay(active_player, 5)
-        active_player.hand.remove(self)
-        game.deck.discard_cards.append(self)
 
 
 class DoubleRentCard(ActionCard):
     def __init__(self, name, value):
         super().__init__(name, value)
 
-    def played(self, game, active_player, rent_card=None, players_list=None, chosen_color=None, as_money=False):
+    def played(self, active_player, rent_card=None, players_list=None, chosen_color=None, as_money=False):
         if as_money:
             self.play_as_money(active_player)
         else:
             rent_card.played(active_player, players_list, chosen_color, double=True)
-        active_player.hand.remove(self)
-        game.deck.discard_cards.append(self)
 
 
 class ForcedDealCard(ActionCard):
     def __init__(self, name, value):
         super().__init__(name, value)
 
-    def played(self, game, active_player, targeted_player=None, ap_color_a_card=None, tp_color_a_card=None, as_money=False):
+    def played(self, active_player, targeted_player=None, ap_color_a_card=None, tp_color_a_card=None, as_money=False):
         if as_money:
             self.play_as_money(active_player)
         else:
             targeted_player.properties[tp_color_a_card[0]].remove(tp_color_a_card[1])
-            active_player.properties[tp_color_a_card[0]].append(tp_color_a_card[1])
+            active_player.cards_buffer.append(tp_color_a_card[1])
 
             active_player.properties[ap_color_a_card[0]].remove(ap_color_a_card[1])
             targeted_player.properties[ap_color_a_card[0]].append(ap_color_a_card[1])
 
-        active_player.hand.remove(self)
-        game.deck.discard_cards.append(self)
+
+class SlyDealCard(ActionCard):
+    def __init__(self, name, value):
+        super().__init__(name, value)
+
+    def played(self, active_player, targeted_player, tp_color_a_card, as_money=False):
+        if as_money:
+            self.play_as_money(active_player)
+        else:
+            targeted_player.properties[tp_color_a_card[0]].remove(tp_color_a_card[1])
+            active_player.cards_buffer.append(tp_color_a_card[1])
+
+
+class HouseCard(ActionCard):
+    def __init__(self, name, value):
+        super().__init__(name, value)
+
+    def played(self, active_player, chosen_color=None, as_money=False):
+        if as_money:
+            self.play_as_money(active_player)
+        else:
+            if len(active_player.properties[chosen_color]) == group_sizes[chosen_color]:
+                if not active_player.groups[chosen_color]["house"]:
+                    active_player.groups[chosen_color]["house"] = True
+                else:
+                    raise IllegalMove(f"{active_player.name} - {chosen_color} - All ready have house")
+            else:
+                raise IllegalMove(f"{active_player.name} - {chosen_color} - Not a full group"
+                                  f"{len(active_player.properties[chosen_color])} vs {group_sizes[chosen_color]}")
+
+
+class HotelCard(ActionCard):
+    def __init__(self, name, value):
+        super().__init__(name, value)
+
+    def played(self, active_player, chosen_color=None, as_money=False):
+        if as_money:
+            self.play_as_money(active_player)
+        else:
+            active_player.groups[chosen_color]["hotel"] = True

@@ -13,6 +13,28 @@ class Player:
                            "YELLOW": [],
                            "BLACK": []
                            }
+        self.groups = {"DARK_BLUE": {"house": False,
+                                     "hotel": False},
+                       "BROWN": {"house": False,
+                                 "hotel": False},
+                       "LIGHT_GREEN": {"house": False,
+                                       "hotel": False},
+                       "GREEN": {"house": False,
+                                 "hotel": False},
+                       "LIGHT_BLUE": {"house": False,
+                                      "hotel": False},
+                       "ORANGE": {"house": False,
+                                  "hotel": False},
+                       "PURPLE": {"house": False,
+                                  "hotel": False},
+                       "RED": {"house": False,
+                               "hotel": False},
+                       "YELLOW": {"house": False,
+                                  "hotel": False},
+                       "BLACK": {"house": False,
+                                 "hotel": False}
+                       }
+        self.cards_buffer = []
         self.money = 0
         self.money_cards = []
 
@@ -27,5 +49,5 @@ class Player:
 
     def pay(self, player, amount):
         if self.money > 0:
-            self.money -= 0 # to do
+            self.money -= 0  # to do
             # player.cash += amount

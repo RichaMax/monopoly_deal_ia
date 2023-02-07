@@ -11,12 +11,13 @@ rent_value = {"DARK_BLUE": [3, 8],
               "YELLOW": [2, 4, 6],
               "BLACK": [1, 2, 3, 4]}
 
+
 class RentCard(ActionCard):
     def __init__(self, name, value, colors):
         super().__init__(name, value)
         self.colors = colors
 
-    def played(self, game, active_player, players_list=None, chosen_color=None, double=False, as_money=False):
+    def played(self, active_player, players_list=None, chosen_color=None, double=False, as_money=False):
         if as_money:
             self.play_as_money(active_player)
         else:
@@ -26,8 +27,6 @@ class RentCard(ActionCard):
                 due_money *= 2
             for player in players_list:
                 player.pay(active_player, due_money)
-        active_player.hand.remove(self)
-        game.deck.discard_cards.append(self)
 
 
 class JokerRentCard(ActionCard):
@@ -35,7 +34,7 @@ class JokerRentCard(ActionCard):
         super().__init__(name, value)
         self.colors = colors
 
-    def played(self, game, active_player, targeted_player=None, chosen_color=None, double=False, as_money=False):
+    def played(self, active_player, targeted_player=None, chosen_color=None, double=False, as_money=False):
         if as_money:
             self.play_as_money(active_player)
         else:
@@ -44,5 +43,3 @@ class JokerRentCard(ActionCard):
             if double:
                 due_money *= 2
             targeted_player.pay(active_player, due_money)
-        active_player.hand.remove(self)
-        game.deck.discard_cards.append(self)
