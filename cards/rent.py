@@ -43,3 +43,28 @@ class JokerRentCard(ActionCard):
             if double:
                 due_money *= 2
             targeted_player.pay(active_player, due_money)
+
+
+class RentDarkBlueGreenCard(RentCard):
+    def __init__(self):
+        super().__init__("Rent Dark Blue - Green", 1, ["DARK_BLUE", "GREEN"])
+
+class RentBrownLightBlueCard(RentCard):
+    def __init__(self):
+        super().__init__("Rent Brown - Light Blue", 1, ["BROWN", "LIGHT_BLUE"])
+
+class RentPurpleOrangeCard(RentCard):
+    def __init__(self):
+        super().__init__("Rent Purple - Orange", 1, ["PURPLE", "ORANGE"])
+
+class RentRedYellowCard(RentCard):
+    def __init__(self):
+        super().__init__("Rent Red - Yellow", 1, ["RED", "YELLOW"])
+
+class RentBlackLightGreenCard(RentCard):
+    def __init__(self):
+        super().__init__("Rent Black - Light Green", 1, ["BLACK", "LIGHT_GREEN"])
+
+class JokerRentAllColors(JokerRentCard):
+    def __init__(self):
+        super().__init__("Joker Rent All", 3, ["DARK_BLUE", "BROWN", "LIGHT_GREEN", "GREEN", "LIGHT_BLUE", "ORANGE", "PURPLE", "RED", "YELLOW", "BLACK"])

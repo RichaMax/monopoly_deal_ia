@@ -102,7 +102,7 @@ class HouseCard(ActionCard):
                 else:
                     raise IllegalMove(f"{active_player.name} - {chosen_color} - All ready have house")
             else:
-                raise IllegalMove(f"{active_player.name} - {chosen_color} - Not a full group"
+                raise IllegalMove(f"{active_player.name} - {chosen_color} - Not a full group: "
                                   f"{len(active_player.properties[chosen_color])} vs {group_sizes[chosen_color]}")
 
 
@@ -115,3 +115,39 @@ class HotelCard(ActionCard):
             self.play_as_money(active_player)
         else:
             active_player.groups[chosen_color]["hotel"] = True
+            if not active_player.groups[chosen_color]["house"]:
+                raise IllegalMove(f"{active_player.name} - {chosen_color} - Do not have a house")
+            else:
+                active_player.groups[chosen_color]["hotel"] = True
+
+
+class ItIsMyBirthdayCard(ActionCard):
+    def __init__(self, name, value):
+        super().__init__(name, value)
+
+    def played(self, active_player, players_list, as_money=False):
+        if as_money:
+            self.play_as_money(active_player)
+        else:
+            for player in players_list:
+                player.pay(active_player, 2)
+
+
+class JustSayNoCard(ActionCard):
+    def __init__(self, name, value):
+        super().__init__(name, value)
+
+    def played(self, active_player, as_money=False):
+        if as_money:
+            self.play_as_money(active_player)
+
+
+class PassGoCard(ActionCard):
+    def __init__(self, name, value):
+        super().__init__(name, value)
+
+    def played(self, active_player, deck, as_money=False):
+        if as_money:
+            self.play_as_money(active_player)
+        else:
+            active_player.draw(deck, 2)
