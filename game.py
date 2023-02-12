@@ -1,29 +1,25 @@
-from player import Player
+from .utils import groups_size
+from .player import Player
 
 
 class MonopolyDeal:
-    def __init__(self, players_list):
+    def __init__(self, players_list, deck):
         self.players = players_list
         self.current_player = None
-        self.observation_space = None # je sais pas encore
+        self.states_space = None  # je sais pas encore, je pense une space matrix
         self.action_space = None # je sais pas encore
-        self.game_status = None # je sais pas encore, je pense une space matrix
+        self.deck = deck
 
     def reset(self):
-        
+        pass
 
-    def start(self):
-        self.turn = 1
-
-    def next_turn(self):
-        self.turn += 1
-        self.current_player = self.players[self.turn % len(self.players)]
-
-    def have_winner(self):
-        for player in self.players:
-            if player.
+    def is_winner(self, player):
+        nb_of_groups = 0
+        for color, size in groups_size.items():
+            if len(player.properties[color]) != size:
+               nb_of_groups += 1
+        return nb_of_groups >= 3
 
     def step(self, action):
-        self.current_player.take_turn()
         # TODO: all
-        return 
+        return

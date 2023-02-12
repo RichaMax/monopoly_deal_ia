@@ -1,16 +1,5 @@
+from ..utils import groups_size
 from .card import Card
-
-group_sizes = {"DARK_BLUE": 2,
-               "BROWN": 2,
-               "LIGHT_GREEN": 2,
-               "GREEN": 4,
-               "LIGHT_BLUE": 2,
-               "ORANGE": 2,
-               "PURPLE": 2,
-               "RED": 3,
-               "YELLOW": 3,
-               "BLACK": 2
-               }
 
 
 class IllegalMove(Exception):
@@ -96,14 +85,14 @@ class HouseCard(ActionCard):
         if as_money:
             self.play_as_money(active_player)
         else:
-            if len(active_player.properties[chosen_color]) == group_sizes[chosen_color]:
+            if len(active_player.properties[chosen_color]) == groups_size[chosen_color]:
                 if not active_player.groups[chosen_color]["house"]:
                     active_player.groups[chosen_color]["house"] = True
                 else:
                     raise IllegalMove(f"{active_player.name} - {chosen_color} - All ready have house")
             else:
                 raise IllegalMove(f"{active_player.name} - {chosen_color} - Not a full group: "
-                                  f"{len(active_player.properties[chosen_color])} vs {group_sizes[chosen_color]}")
+                                  f"{len(active_player.properties[chosen_color])} vs {groups_size[chosen_color]}")
 
 
 class HotelCard(ActionCard):

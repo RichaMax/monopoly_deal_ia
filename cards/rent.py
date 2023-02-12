@@ -1,15 +1,6 @@
 from .action import ActionCard
+from ..utils import rent_value
 
-rent_value = {"DARK_BLUE": [3, 8],
-              "BROWN": [1, 2],
-              "LIGHT_GREEN": [1, 2],
-              "GREEN": [2, 4, 7],
-              "LIGHT_BLUE": [1, 2, 3],
-              "ORANGE": [1, 3, 5],
-              "PURPLE": [1, 2, 4],
-              "RED": [2, 4, 6],
-              "YELLOW": [2, 4, 6],
-              "BLACK": [1, 2, 3, 4]}
 
 
 class RentCard(ActionCard):
