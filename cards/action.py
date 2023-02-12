@@ -18,8 +18,8 @@ class IllegalMove(Exception):
 
 
 class ActionCard(Card):
-    def __init__(self, name, value):
-        super().__init__(name, value)
+    def __init__(self, name, value, id):
+        super().__init__(name, value, id)
 
     def play_as_money(self, active_player):
         active_player.hand.remove(self)
