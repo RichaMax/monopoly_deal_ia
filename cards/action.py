@@ -18,8 +18,8 @@ class IllegalMove(Exception):
 
 
 class ActionCard(Card):
-    def __init__(self, name, value, id):
-        super().__init__(name, value, id)
+    def __init__(self, name, value, card_id):
+        super().__init__(name, value, card_id)
 
     def play_as_money(self, active_player):
         active_player.hand.remove(self)
@@ -28,8 +28,8 @@ class ActionCard(Card):
 
 
 class DealBreakerCard(ActionCard):
-    def __init__(self, name, value):
-        super().__init__(name, value)
+    def __init__(self, name, value, card_id):
+        super().__init__(name, value, card_id)
 
     def played(self, active_player, targeted_player, chosen_color=None, as_money=False):
         if as_money:
@@ -40,8 +40,8 @@ class DealBreakerCard(ActionCard):
 
 
 class DeptCollectionCard(ActionCard):
-    def __init__(self, name, value):
-        super().__init__(name, value)
+    def __init__(self, name, value, card_id):
+        super().__init__(name, value, card_id)
 
     def played(self, active_player, targeted_player, as_money=False):
         if as_money:
@@ -51,8 +51,8 @@ class DeptCollectionCard(ActionCard):
 
 
 class DoubleRentCard(ActionCard):
-    def __init__(self, name, value):
-        super().__init__(name, value)
+    def __init__(self, name, value, card_id):
+        super().__init__(name, value, card_id)
 
     def played(self, active_player, rent_card=None, players_list=None, chosen_color=None, as_money=False):
         if as_money:
@@ -62,8 +62,8 @@ class DoubleRentCard(ActionCard):
 
 
 class ForcedDealCard(ActionCard):
-    def __init__(self, name, value):
-        super().__init__(name, value)
+    def __init__(self, name, value, card_id):
+        super().__init__(name, value, card_id)
 
     def played(self, active_player, targeted_player=None, ap_color_a_card=None, tp_color_a_card=None, as_money=False):
         if as_money:
@@ -77,8 +77,8 @@ class ForcedDealCard(ActionCard):
 
 
 class SlyDealCard(ActionCard):
-    def __init__(self, name, value):
-        super().__init__(name, value)
+    def __init__(self, name, value, card_id):
+        super().__init__(name, value, card_id)
 
     def played(self, active_player, targeted_player, tp_color_a_card, as_money=False):
         if as_money:
@@ -89,8 +89,8 @@ class SlyDealCard(ActionCard):
 
 
 class HouseCard(ActionCard):
-    def __init__(self, name, value):
-        super().__init__(name, value)
+    def __init__(self, name, value, card_id):
+        super().__init__(name, value, card_id)
 
     def played(self, active_player, chosen_color=None, as_money=False):
         if as_money:
@@ -107,8 +107,8 @@ class HouseCard(ActionCard):
 
 
 class HotelCard(ActionCard):
-    def __init__(self, name, value):
-        super().__init__(name, value)
+    def __init__(self, name, value, card_id):
+        super().__init__(name, value, card_id)
 
     def played(self, active_player, chosen_color=None, as_money=False):
         if as_money:
@@ -122,8 +122,8 @@ class HotelCard(ActionCard):
 
 
 class ItIsMyBirthdayCard(ActionCard):
-    def __init__(self, name, value):
-        super().__init__(name, value)
+    def __init__(self, name, value, card_id):
+        super().__init__(name, value, card_id)
 
     def played(self, active_player, players_list, as_money=False):
         if as_money:
@@ -134,8 +134,8 @@ class ItIsMyBirthdayCard(ActionCard):
 
 
 class JustSayNoCard(ActionCard):
-    def __init__(self, name, value):
-        super().__init__(name, value)
+    def __init__(self, name, value, card_id):
+        super().__init__(name, value, card_id)
 
     def played(self, active_player, as_money=False):
         if as_money:
@@ -143,8 +143,8 @@ class JustSayNoCard(ActionCard):
 
 
 class PassGoCard(ActionCard):
-    def __init__(self, name, value):
-        super().__init__(name, value)
+    def __init__(self, name, value, card_id):
+        super().__init__(name, value, card_id)
 
     def played(self, active_player, deck, as_money=False):
         if as_money:

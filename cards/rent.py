@@ -13,8 +13,8 @@ rent_value = {"DARK_BLUE": [3, 8],
 
 
 class RentCard(ActionCard):
-    def __init__(self, name, value, colors):
-        super().__init__(name, value)
+    def __init__(self, name, value, card_id, colors):
+        super().__init__(name, value, card_id)
         self.colors = colors
 
     def played(self, active_player, players_list=None, chosen_color=None, double=False, as_money=False):
@@ -30,8 +30,8 @@ class RentCard(ActionCard):
 
 
 class JokerRentCard(ActionCard):
-    def __init__(self, name, value, colors):
-        super().__init__(name, value)
+    def __init__(self, name, value, card_id, colors):
+        super().__init__(name, value, card_id)
         self.colors = colors
 
     def played(self, active_player, targeted_player=None, chosen_color=None, double=False, as_money=False):
@@ -47,24 +47,24 @@ class JokerRentCard(ActionCard):
 
 class RentDarkBlueGreenCard(RentCard):
     def __init__(self):
-        super().__init__("Rent Dark Blue - Green", 1, ["DARK_BLUE", "GREEN"])
+        super().__init__("Rent Dark Blue - Green", 1, 25, ["DARK_BLUE", "GREEN"])
 
 class RentBrownLightBlueCard(RentCard):
     def __init__(self):
-        super().__init__("Rent Brown - Light Blue", 1, ["BROWN", "LIGHT_BLUE"])
+        super().__init__("Rent Brown - Light Blue", 1, 26, ["BROWN", "LIGHT_BLUE"])
 
 class RentPurpleOrangeCard(RentCard):
     def __init__(self):
-        super().__init__("Rent Purple - Orange", 1, ["PURPLE", "ORANGE"])
+        super().__init__("Rent Purple - Orange", 1, 27, ["PURPLE", "ORANGE"])
 
 class RentRedYellowCard(RentCard):
     def __init__(self):
-        super().__init__("Rent Red - Yellow", 1, ["RED", "YELLOW"])
+        super().__init__("Rent Red - Yellow", 1, 28, ["RED", "YELLOW"])
 
 class RentBlackLightGreenCard(RentCard):
     def __init__(self):
-        super().__init__("Rent Black - Light Green", 1, ["BLACK", "LIGHT_GREEN"])
+        super().__init__("Rent Black - Light Green", 1, 29, ["BLACK", "LIGHT_GREEN"])
 
 class JokerRentAllColors(JokerRentCard):
     def __init__(self):
-        super().__init__("Joker Rent All", 3, ["DARK_BLUE", "BROWN", "LIGHT_GREEN", "GREEN", "LIGHT_BLUE", "ORANGE", "PURPLE", "RED", "YELLOW", "BLACK"])
+        super().__init__("Joker Rent All", 3, 30, ["DARK_BLUE", "BROWN", "LIGHT_GREEN", "GREEN", "LIGHT_BLUE", "ORANGE", "PURPLE", "RED", "YELLOW", "BLACK"])

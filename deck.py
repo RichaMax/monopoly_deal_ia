@@ -40,14 +40,14 @@ class Deck:
                [RentDarkBlueGreenCard() for _ in range(2)] + [RentBlackLightGreenCard() for _ in range(2)] + \
                [RentBrownLightBlueCard() for _ in range(2)] + [RentPurpleOrangeCard() for _ in range(2)] + \
                [RentRedYellowCard() for _ in range(2)] + [JokerRentAllColors() for _ in range(3)] + \
-               [DealBreakerCard('Deal Breaker', 5) for _ in range(2)] + \
-               [DeptCollectionCard('Dept Collection', 3) for _ in range(3)] + \
-               [DoubleRentCard('Double Rent', 1) for _ in range(2)] + \
-               [ForcedDealCard('Forced Deal', 3) for _ in range(3)] + \
-               [SlyDealCard("Sly Deal", 3) for _ in range(3)] + \
-               [ItIsMyBirthdayCard("Birthday", 2) for _ in range(3)] + [PassGoCard("Pass Go", 1) for _ in range(10)] + \
-               [JustSayNoCard("No", 4) for _ in range(3)] + \
-               [HouseCard("House", 3) for _ in range(3)] + [HotelCard("Hotel", 4) for _ in range(3)]
+               [DealBreakerCard('Deal Breaker', 5, 31) for _ in range(2)] + \
+               [DeptCollectionCard('Dept Collection', 3, 32) for _ in range(3)] + \
+               [DoubleRentCard('Double Rent', 1, 33) for _ in range(2)] + \
+               [ForcedDealCard('Forced Deal', 3, 34) for _ in range(3)] + \
+               [SlyDealCard("Sly Deal", 3, 35) for _ in range(3)] + \
+               [ItIsMyBirthdayCard("Birthday", 2, 36) for _ in range(3)] + [PassGoCard("Pass Go", 1, 37) for _ in range(10)] + \
+               [JustSayNoCard("No", 4, 38) for _ in range(3)] + \
+               [HouseCard("House", 3, 39) for _ in range(3)] + [HotelCard("Hotel", 4, 40) for _ in range(3)]
 
     def draw(self):
         return self.cards.pop()
