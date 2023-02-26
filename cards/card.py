@@ -1,5 +1,6 @@
 from abc import ABC
 
+
 class Card(ABC):
     def __init__(self, name: str, value: int, card_id: int):
         self.name = name

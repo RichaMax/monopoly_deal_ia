@@ -47,7 +47,7 @@ class Deck:
                [SlyDealCard("Sly Deal", 3, 35) for _ in range(3)] + \
                [ItIsMyBirthdayCard("Birthday", 2, 36) for _ in range(3)] + [PassGoCard("Pass Go", 1, 37) for _ in range(10)] + \
                [JustSayNoCard("No", 4, 38) for _ in range(3)] + \
-               [HouseCard("House", 3, 39) for _ in range(3)] + [HotelCard("Hotel", 4, 40) for _ in range(3)]
+               [HouseCard("House", 3, 39) for _ in range(3)] + [HotelCard("Hotel", 4, 40) for _ in range(2)]
 
     def draw(self):
         return self.cards.pop()

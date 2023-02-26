@@ -2,7 +2,6 @@ from .action import ActionCard
 from ..utils import rent_value
 
 
-
 class RentCard(ActionCard):
     def __init__(self, name, value, card_id, colors):
         super().__init__(name, value, card_id)

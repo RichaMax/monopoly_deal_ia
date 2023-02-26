@@ -7,7 +7,6 @@ class PropertyCard(Card):
         self.color = color
 
     def played(self, active_player):
-        active_player.hand.remove(self)
         active_player.properties[self.color].append(self)
         active_player.money += self.value
 
@@ -28,7 +27,6 @@ class JokerPropertyCard(Card):
     # en gros y aura deux action au niveau du joueur pour jouer cette carte, tu la poses c1 ou c2
     def played(self, active_player, chosen_color):
         self.active_color_pos = self.colors.index(chosen_color)
-        active_player.hand.remove(self)
         active_player.properties[self.colors[self.active_color_pos]].append(
             self)
         active_player.money += self.value

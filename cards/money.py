@@ -1,11 +1,11 @@
 from .card import Card
 
+
 class MoneyCard(Card):
     def __init__(self, name, value, card_id):
         super().__init__(name, value, card_id)
 
     def played(self, active_player):
-        active_player.hand.remove(self)
         active_player.money_cards.append(self)
         active_player.money += self.value
 
